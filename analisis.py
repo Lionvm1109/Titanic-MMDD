@@ -60,6 +60,49 @@ print("\n===== ESTADISTICAS DE TODAS LAS VARIABLES =====")
 print(datos.describe(include="all"))
 
 
+
+# CREAR VARIABLES NUEVAS
+
+
+# 1. Crear la variable FamilySize
+# Suma hermanos, pareja, padres e hijos, mas el pasajero
+
+datos["FamilySize"] = datos["SibSp"] + datos["Parch"] + 1
+
+print("\n===== TAMANO DE LA FAMILIA =====")
+print(datos[["SibSp", "Parch", "FamilySize"]].head())
+
+
+# 2. Crear categorias de edad
+
+datos["AgeGroup"] = pd.cut(
+    datos["Age"],
+    bins=[0, 18, 30, 60, float("inf")],
+    labels=["Nino", "Joven", "Adulto", "Adulto mayor"],
+    right=False
+)
+
+print("\n===== CATEGORIAS DE EDAD =====")
+print(datos[["Age", "AgeGroup"]].head())
+
+
+# 3. Contar pasajeros por categoria de edad
+
+print("\n===== CANTIDAD POR CATEGORIA =====")
+print(datos["AgeGroup"].value_counts())
+
+
+# 4. Contar pasajeros por tamano de familia
+
+print("\n===== TAMANO DE FAMILIA =====")
+print(datos["FamilySize"].value_counts().sort_index())
+
+
+
+
+
+
+
 # ==========================================
 # 4. ANALISIS DE SUPERVIVENCIA
 # ==========================================
@@ -252,9 +295,3 @@ plt.tight_layout()
 
 plt.show()
 
-
-# ==========================================
-# FIN DEL ANALISIS
-# ==========================================
-
-print("\n===== FIN DEL ANALISIS =====")
