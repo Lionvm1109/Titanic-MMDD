@@ -194,6 +194,46 @@ if not datos["Embarked"].dropna().empty:
     print(datos["Embarked"].mode()[0])
 
 
+
+
+# ==========================================
+# GRAFICA DE TAMANO DE FAMILIA
+# ==========================================
+
+datos["FamilySize"].value_counts().sort_index().plot(
+    kind="bar"
+)
+
+plt.title("Tamano de familia de los pasajeros")
+plt.xlabel("Numero de integrantes")
+plt.ylabel("Cantidad de pasajeros")
+
+plt.xticks(rotation=0)
+
+plt.tight_layout()
+
+plt.show()
+
+
+# ==========================================
+# GRAFICA DE CATEGORIAS DE EDAD
+# ==========================================
+
+datos["AgeGroup"].value_counts().sort_index().plot(
+    kind="bar"
+)
+
+plt.title("Pasajeros por categoria de edad")
+plt.xlabel("Categoria de edad")
+plt.ylabel("Cantidad de pasajeros")
+
+plt.xticks(rotation=0)
+
+plt.tight_layout()
+
+plt.show()
+
+
 # ==========================================
 # 8. GRAFICA DE VALORES FALTANTES
 # ==========================================
