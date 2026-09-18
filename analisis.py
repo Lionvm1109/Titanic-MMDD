@@ -1,17 +1,19 @@
+
+# Importar las librerias
 import pandas as pd
+import matplotlib.pyplot as plt
 
-# Cargar gender_submission.csv
-df = pd.read_csv('gender_submission.csv')
+datos = pd.read_csv("train.csv")
 
-# Realizar una exploración inicial:
+# 5 registros
+print("Primeros registros:")
+print(datos.head())
 
-# Número de pasajeros y Número de columnas
-filas, columnas = df.shape
-print(f"Número de pasajeros (filas): {filas}")
-print(f"Número de columnas: {columnas}\n")
+# Informacion del archivo
+print("\nInformacion del dataset:")
+datos.info()
 
-# Variables disponibles
-print("Variables disponibles:")
-print(df.columns.tolist())
-print()
+# Total de pasajeros
+total = len(datos)
 
+print("\nTotal de pasajeros:", total)
